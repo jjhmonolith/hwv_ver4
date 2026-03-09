@@ -12,6 +12,7 @@ import { globalLimiter } from "./middleware/rateLimiter";
 dotenv.config();
 
 const app = express();
+app.set("trust proxy", 1);
 const PORT = process.env.PORT || 4010;
 
 // CORS 멀티 오리진 지원
