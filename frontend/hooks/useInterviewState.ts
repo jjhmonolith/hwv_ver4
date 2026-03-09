@@ -139,6 +139,15 @@ export function useInterviewState(settings: InterviewSettings) {
     setState((prev) => ({ ...prev, error }));
   }, []);
 
+  const updateTopicTimeLeft = useCallback((topicIndex: number, timeLeft: number) => {
+    setState((prev) => ({
+      ...prev,
+      topics: prev.topics.map((t, i) =>
+        i === topicIndex ? { ...t, timeLeft } : t
+      ),
+    }));
+  }, []);
+
   const reset = useCallback(() => {
     setState(initialState);
   }, []);
@@ -158,6 +167,7 @@ export function useInterviewState(settings: InterviewSettings) {
     setInterviewMode,
     setSummary,
     setError,
+    updateTopicTimeLeft,
     reset,
     restoreState,
   };

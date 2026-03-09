@@ -52,6 +52,7 @@ export default function InterviewPage() {
     setInterviewMode,
     setSummary,
     setError,
+    updateTopicTimeLeft,
     reset,
     restoreState,
   } = useInterviewState(settings);
@@ -89,6 +90,13 @@ export default function InterviewPage() {
     isListening,
     interviewMode: state.interviewMode,
   });
+
+  // 타이머 timeLeft를 현재 토픽에 동기화 (소요시간 계산용)
+  useEffect(() => {
+    if (state.phase === "interview" && currentTopic?.started) {
+      updateTopicTimeLeft(state.currentTopicIndex, timeLeft);
+    }
+  }, [timeLeft]);
 
   // localStorage 저장
   const { checkRecovery, clearSaved } = useInterviewPersistence(state);

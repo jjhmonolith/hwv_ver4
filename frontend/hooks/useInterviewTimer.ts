@@ -31,6 +31,15 @@ export function useInterviewTimer({
 }: UseInterviewTimerProps): UseInterviewTimerReturn {
   const [timeLeft, setTimeLeft] = useState(totalTime);
   const prevTopicIndexRef = useRef(currentTopicIndex);
+  const prevTotalTimeRef = useRef(totalTime);
+
+  // totalTime 변경 시 타이머 동기화 (세션 설정 로드 후)
+  useEffect(() => {
+    if (totalTime !== prevTotalTimeRef.current) {
+      setTimeLeft(totalTime);
+      prevTotalTimeRef.current = totalTime;
+    }
+  }, [totalTime]);
 
   // 주제 변경 시 타이머 리셋
   useEffect(() => {
