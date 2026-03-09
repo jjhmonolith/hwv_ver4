@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import type { InterviewSettings, InterviewMode } from "@/types/interview";
 
 interface UploadCardProps {
@@ -22,6 +22,13 @@ export function UploadCard({
       interviewMode: "student_choice",
     }
   );
+  // sessionSettings가 비동기로 로드되므로 prop 변경 시 동기화
+  useEffect(() => {
+    if (sessionSettings) {
+      setSettings(sessionSettings);
+    }
+  }, [sessionSettings]);
+
   const [error, setError] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
