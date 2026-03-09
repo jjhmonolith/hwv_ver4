@@ -1,0 +1,43 @@
+{
+  "name": "backend-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test:phase2": "bash test-phase2.sh",
+    "test:phase3": "bash test-phase3.sh",
+    "test": "bash test-phase2.sh && bash test-phase3.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@elevenlabs/elevenlabs-js": "^2.36.0",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.3.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.0.2",
+    "openai": "^6.22.0",
+    "pg": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.0.0",
+    "@types/node": "^25.3.0",
+    "@types/pg": "^8.16.0",
+    "nodemon": "^3.1.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
