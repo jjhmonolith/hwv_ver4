@@ -81,7 +81,7 @@ async def generate_summary(request: Request, req: SummaryRequest):
 {req.transcript[:4000]}""",
                 },
             ],
-            max_tokens=1000,
+            max_completion_tokens=1000,
             response_format={"type": "json_object"},
         )
 

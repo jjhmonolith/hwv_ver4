@@ -71,7 +71,7 @@ def generate_topics(text: str, topic_count: int = 3) -> list[TopicItem]:
             },
             {"role": "user", "content": f"과제 내용:\n{text[:4000]}"},
         ],
-        max_tokens=500,
+        max_completion_tokens=500,
         response_format={"type": "json_object"},
     )
 

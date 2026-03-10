@@ -57,7 +57,7 @@ async def generate_question(request: Request, req: QuestionRequest):
         response = client.chat.completions.create(
             model=get_model(),
             messages=messages,
-            max_tokens=300,
+            max_completion_tokens=300,
         )
 
         content = response.choices[0].message.content or ""
