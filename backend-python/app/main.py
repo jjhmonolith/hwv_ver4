@@ -37,7 +37,17 @@ app.add_middleware(
 
 @app.get("/health")
 def health():
-    return {"status": "ok", "service": "fastapi"}
+    import openai
+    from app.services.openai_service import get_model
+    api_key = os.getenv("OPENAI_API_KEY", "")
+    return {
+        "status": "ok",
+        "service": "fastapi",
+        "openai_sdk": openai.__version__,
+        "model": get_model(),
+        "api_key_set": bool(api_key),
+        "api_key_prefix": api_key[:8] + "..." if len(api_key) > 8 else "NOT_SET",
+    }
 
 
 # AI APIs
