@@ -144,11 +144,9 @@ async def analyze_pdf(request: Request, req: AnalyzeRequest):
             fallback=True,
         )
     except Exception as e:
-        import traceback
         print(f"Analyze error: {e}")
-        traceback.print_exc()
         return AnalyzeResponse(
             topics=FALLBACK_TOPICS,
-            text=f"분석 중 오류가 발생했습니다: {type(e).__name__}: {str(e)[:200]}",
+            text="분석 중 오류가 발생했습니다.",
             fallback=True,
         )
