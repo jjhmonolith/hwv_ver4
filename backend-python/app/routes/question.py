@@ -53,6 +53,9 @@ async def generate_question(request: Request, req: QuestionRequest):
 
         if req.studentAnswer:
             messages.append({"role": "user", "content": req.studentAnswer})
+        elif not req.previousQA:
+            # 첫 질문: user 메시지가 없으면 gpt-5.x가 빈 응답 반환하므로 명시적 요청 추가
+            messages.append({"role": "user", "content": "이 주제에 대한 첫 번째 인터뷰 질문을 생성해주세요."})
 
         response = client.chat.completions.create(
             model=get_model(),
